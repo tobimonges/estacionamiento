@@ -1,9 +1,9 @@
-package tm.estacionamiento.service;
+package tm.estacionamiento.services;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import tm.estacionamiento.entity.UsuarioEntity;
-import tm.estacionamiento.repository.UsuarioRepository;
+import tm.estacionamiento.models.UsuarioModel;
+import tm.estacionamiento.repositories.UsuarioRepository;
 
 @Service
 public class UsuarioService {
@@ -15,7 +15,7 @@ public class UsuarioService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UsuarioEntity registrarUsuario(UsuarioEntity usuario){
+    public UsuarioModel registrarUsuario(UsuarioModel usuario){
         if (usuarioRepository.existsByEmail(usuario.getEmail())) {
             throw new IllegalArgumentException("El correo ya esta registrado");
         }

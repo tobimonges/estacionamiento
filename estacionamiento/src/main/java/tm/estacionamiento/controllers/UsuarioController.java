@@ -1,12 +1,12 @@
-package tm.estacionamiento.controller;
+package tm.estacionamiento.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tm.estacionamiento.entity.UsuarioEntity;
-import tm.estacionamiento.service.UsuarioService;
+import tm.estacionamiento.models.UsuarioModel;
+import tm.estacionamiento.services.UsuarioService;
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -18,9 +18,9 @@ public class UsuarioController {
     }
 
     @PostMapping()
-    public ResponseEntity<UsuarioEntity> registrarUsuario(@RequestBody UsuarioEntity usuario) {
+    public ResponseEntity<UsuarioModel> registrarUsuario(@RequestBody UsuarioModel usuario) {
         try {
-            UsuarioEntity newUsuario = usuarioService.registrarUsuario(usuario);
+            UsuarioModel newUsuario = usuarioService.registrarUsuario(usuario);
             return ResponseEntity.ok(newUsuario);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(null);

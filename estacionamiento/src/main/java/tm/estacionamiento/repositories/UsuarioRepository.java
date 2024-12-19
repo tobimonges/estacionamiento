@@ -1,10 +1,10 @@
-package tm.estacionamiento.repository;
+package tm.estacionamiento.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import tm.estacionamiento.entity.UsuarioEntity;
+import tm.estacionamiento.models.UsuarioModel;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Long> {
+public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
     boolean existsByEmail(String email);
 }

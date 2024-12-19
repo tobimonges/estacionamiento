@@ -1,4 +1,4 @@
-package tm.estacionamiento.entity;
+package tm.estacionamiento.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Table(name = "espacio_estacionamiento")
-public class EspacioEstacionamientoEntity {
+public class EspacioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private String sector;

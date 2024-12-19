@@ -1,4 +1,4 @@
-package tm.estacionamiento.entity;
+package tm.estacionamiento.models;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,11 +9,11 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Table(name = "usuario")
-public class UsuarioEntity {
+public class UsuarioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private String nombre;

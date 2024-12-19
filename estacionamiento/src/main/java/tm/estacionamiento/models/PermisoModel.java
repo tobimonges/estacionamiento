@@ -1,4 +1,4 @@
-package tm.estacionamiento.entity;
+package tm.estacionamiento.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,18 +14,18 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Builder
 @Table(name = "permiso_estacionamiento")
-public class PermisoEstacionamientoEntity {
+public class PermisoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
-    private UsuarioEntity usuario;
+    private UsuarioModel usuario;
 
     @Column(nullable = false)
-    private String categoria;
+    private String categoria; // estudiante, docente, personal administrativo
 
     @Column(nullable = false)
     private LocalDate fechaInicio;

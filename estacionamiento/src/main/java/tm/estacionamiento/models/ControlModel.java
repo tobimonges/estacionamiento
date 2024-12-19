@@ -1,4 +1,4 @@
-package tm.estacionamiento.entity;
+package tm.estacionamiento.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Table(name = "registro_acceso")
-public class RegistroAccesoEntity {
+public class ControlModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
@@ -31,5 +31,5 @@ public class RegistroAccesoEntity {
     private LocalDateTime fechaHoraSalida;
 
     @Column(nullable = false)
-    private String estado;
+    private String estado; // ENTRADA o SALIDA
 }
