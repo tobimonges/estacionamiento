@@ -30,9 +30,9 @@ public class EspacioController {
     }
 
     @PostMapping("/ocupar")
-    public ResponseEntity<String> ocuparEspacio (@RequestParam String matriculaVehiculo) {
+    public ResponseEntity<String> ocuparEspacio (@RequestParam String matricula) {
         try {
-            espacioService.ocuparEspacio(matriculaVehiculo);
+            espacioService.ocuparEspacio(matricula);
             return ResponseEntity.ok("Espacio ocupado correctamente.");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -40,9 +40,9 @@ public class EspacioController {
     }
 
     @PostMapping("/liberar")
-    public ResponseEntity<String> liberarEspacio (@RequestParam String matriculaVehiculo) {
+    public ResponseEntity<String> liberarEspacio (@RequestParam String matricula) {
         try {
-            espacioService.liberarEspacio(matriculaVehiculo);
+            espacioService.liberarEspacio(matricula);
             return ResponseEntity.ok("Espacio liberado correctamente");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

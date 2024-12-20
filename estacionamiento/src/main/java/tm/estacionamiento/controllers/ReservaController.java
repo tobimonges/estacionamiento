@@ -17,7 +17,7 @@ public class ReservaController {
         this.reservaService = reservaService;
     }
 
-    @PostMapping("/{usuarioId")
+    @PostMapping("/{usuarioId}")
     public ResponseEntity<ReservaModel> crearReserva(@PathVariable Long usuarioId, @RequestBody ReservaModel reserva) {
         try {
             ReservaModel newReserva = reservaService.crearReserva(usuarioId, reserva);

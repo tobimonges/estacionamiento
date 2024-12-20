@@ -41,7 +41,8 @@ public class ReservaService {
     }
 
     public List<ReservaModel> obtenerReservasActivas(String sector) {
-        return reservaRepository.findBySector(sector,LocalDateTime.now(),"ACTIVA");
+        String s = sector;
+        return reservaRepository.findBySectorAndFechaHoraReservaAfterAndEstado(s,LocalDateTime.now(),"ACTIVA");
     }
     public void cancelarReserva(Long reservaId) {
         ReservaModel reserva = reservaRepository.findById(reservaId)

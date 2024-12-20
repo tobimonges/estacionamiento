@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ReservaRepository extends JpaRepository<ReservaModel, Long> {
-    List<ReservaModel> findBySector(String sector, LocalDateTime fechaActual, String estado);
+    List<ReservaModel> findBySectorAndFechaHoraReservaAfterAndEstado(String sector, LocalDateTime fechaActual, String estado);
 }

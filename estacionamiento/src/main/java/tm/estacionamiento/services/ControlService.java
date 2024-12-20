@@ -19,24 +19,25 @@ public class ControlService {
         this.controlRepository = controlRepository;
     }
 
-    public ControlModel entrada(String matriculaVehiculo) {
+    public ControlModel entrada(String matricula) {
         Optional<PermisoModel> permiso = permisoRepository.findAll().stream()
-                .filter(p -> p.getUsuario().getMatriculaVehiculo().equals(matriculaVehiculo))
+                .filter(p -> p.getUsuario().getMatricula().equals(matricula))
                 .findFirst();
 
         if (permiso.isEmpty()) {
             throw new IllegalArgumentException("El vehiculo no tiene un permiso de estacionamiento valido.");
         }
+        ControlModel control = new ControlModel();
+        control.setMatricula(matricula);
+        control.setFechaHoraEntrada(LocalDateTime.now());
+        control.setEstado("ENTRADA");
 
-        ControlModel control = ControlModel.builder()
-                .matriculaVehiculo(matriculaVehiculo)
-                .fechaHoraEntrada(LocalDateTime.now())
-                .estado("ENTRADA")
-                .build();
         return controlRepository.save(control);
+
     }
-    public ControlModel salida(String matriculaVehiculo) {
-        ControlModel control = controlRepository.findByMatricula(matriculaVehiculo)
+
+    public ControlModel salida(String matricula) {
+        ControlModel control = controlRepository.findByMatricula(matricula)
                 .orElseThrow(() -> new IllegalArgumentException("No se encontro un registro de entrada para este vehiculo"));
         control.setFechaHoraSalida(LocalDateTime.now());
         control.setEstado("SALIDA");;

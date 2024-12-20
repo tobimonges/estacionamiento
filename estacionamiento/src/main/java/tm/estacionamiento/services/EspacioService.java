@@ -26,23 +26,23 @@ public class EspacioService {
         return espacioRepository.countBySectorAndOcupadoTrue(sector);
     }
 
-    public void ocuparEspacio(String matriculaVehiculo) {
+    public void ocuparEspacio(String matricula) {
         EspacioModel espacioDisponible = espacioRepository.findBySectorAndOcupadoFalse("Sector A")
                 .stream()
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("No hay espacios en este sector."));
         espacioDisponible.setOcupado(true);
-        espacioDisponible.setMatriculaVehiculo(matriculaVehiculo);
+        espacioDisponible.setMatricula(matricula);
         espacioRepository.save(espacioDisponible);
     }
 
-    public void liberarEspacio(String matriculaVehiculo) {
+    public void liberarEspacio(String matricula) {
         EspacioModel espacioOcupado = espacioRepository.findAll().stream()
-                .filter(espacio -> matriculaVehiculo.equals(espacio.getMatriculaVehiculo()) && espacio.isOcupado())
+                .filter(espacio -> matricula.equals(espacio.getMatricula()) && espacio.isOcupado())
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("No se encontro un espacio ocupado por este vehiculo."));
         espacioOcupado.setOcupado(false);
-        espacioOcupado.setMatriculaVehiculo(null);
+        espacioOcupado.setMatricula(null);
         espacioRepository.save(espacioOcupado);
     }
 }

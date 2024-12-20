@@ -1,16 +1,8 @@
 package tm.estacionamiento.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Table(name = "espacio_estacionamiento")
 public class EspacioModel {
     @Id
@@ -24,5 +16,47 @@ public class EspacioModel {
     @Column(nullable = false)
     private boolean ocupado;
 
-    private String matriculaVehiculo;
+    private String matricula;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSector() {
+        return sector;
+    }
+
+    public void setSector(String sector) {
+        this.sector = sector;
+    }
+
+    public boolean isOcupado() {
+        return ocupado;
+    }
+
+    public void setOcupado(boolean ocupado) {
+        this.ocupado = ocupado;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public EspacioModel(Long id, String sector, boolean ocupado, String matricula) {
+        this.id = id;
+        this.sector = sector;
+        this.ocupado = ocupado;
+        this.matricula = matricula;
+    }
+
+    public EspacioModel() {
+    }
 }

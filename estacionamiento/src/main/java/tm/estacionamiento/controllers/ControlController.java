@@ -18,9 +18,9 @@ public class ControlController {
     }
 
     @PostMapping("/entrada")
-    public ResponseEntity<ControlModel> entrada(@RequestParam String matriculaVehiculo) {
+    public ResponseEntity<ControlModel> entrada(@RequestParam String matricula) {
         try {
-            ControlModel entrada = controlService.entrada(matriculaVehiculo);
+            ControlModel entrada = controlService.entrada(matricula);
             return ResponseEntity.ok(entrada);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(null);
@@ -28,9 +28,9 @@ public class ControlController {
     }
 
     @PostMapping("/salida")
-    public ResponseEntity<ControlModel> salida(@RequestParam String matriculaVehiculo) {
+    public ResponseEntity<ControlModel> salida(@RequestParam String matricula) {
         try {
-            ControlModel salida = controlService.salida(matriculaVehiculo);
+            ControlModel salida = controlService.salida(matricula);
             return ResponseEntity.ok(salida);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(null);

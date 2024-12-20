@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface ControlRepository extends JpaRepository<ControlModel, Long> {
     Optional<ControlModel> findByMatricula(String matricula);
 
-    String matriculaVehiculo(String matriculaVehiculo);
+    String matricula(String matricula);
 }
